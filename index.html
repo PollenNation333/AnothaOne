@@ -468,12 +468,101 @@ html, body { background:#fff; height:100%; }
 .qual-badge img{
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
   filter: drop-shadow(0 10px 24px rgba(0,0,0,0.12));
 }
 @keyframes qual-marquee{
   0%{ transform: translateX(0); }
   100%{ transform: translateX(-50%); }
+}
+
+/* === Contact Section === */
+.contact-section{
+  background:#2f482b;
+  color:#f6f6f3;
+  padding: clamp(50px, 7vw, 90px) clamp(20px, 6vw, 72px);
+  margin-top: -150px;
+}
+.contact-shell{
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+  text-align: center;
+}
+.contact-header h2{
+  margin:0;
+  font-size: clamp(42px, 8vw, 68px);
+  letter-spacing: 0.02em;
+}
+.contact-header p{
+  margin: 12px auto 6px;
+  max-width: 720px;
+  line-height: 1.5;
+  color:#f0f0eb;
+}
+.contact-form form{
+  display:grid;
+  gap: 16px;
+  color:#f6f6f3;
+}
+.contact-row{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.contact-form label{
+  font-weight:700;
+  display:block;
+  margin-bottom:8px;
+  text-align:left;
+}
+.contact-form input,
+.contact-form textarea{
+  width:100%;
+  padding: 14px 16px;
+  border:1.4px solid #c8d2c0;
+  border-radius: 999px;
+  font-size:15px;
+  font-family: inherit;
+  background:#3c5a34;
+  color:#f6f6f3;
+}
+.contact-form textarea{
+  min-height: 180px;
+  border-radius: 18px;
+  resize: vertical;
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder{
+  color: rgba(246,246,243,0.82);
+}
+.contact-checkbox{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  justify-content:flex-start;
+}
+.contact-form button{
+  border:1.5px solid #f6f6f3;
+  background: transparent;
+  color:#f6f6f3;
+  padding:14px 16px;
+  border-radius: 999px;
+  font-size:15px;
+  font-weight:800;
+  cursor:pointer;
+  transition: background .2s ease, color .2s ease, transform .1s ease;
+}
+.contact-form button:hover{
+  background:#f6f6f3;
+  color:#2f482b;
+}
+.contact-form button:active{ transform: translateY(1px); }
+@media (max-width: 840px){
+  .contact-row{ grid-template-columns: 1fr; }
+  .contact-section{ margin-top: -80px; }
 }
 
 </style>
@@ -728,6 +817,49 @@ html, body { background:#fff; height:100%; }
   </div>
 </section>
 <!-- === /Qualifications Section === -->
+<!-- === Contact Section === -->
+<section class="contact-section" id="contact">
+  <div class="contact-shell">
+    <div class="contact-header">
+      <h2> CONTACT US</h2>
+      <p style="font-size:25px;">Feel free to call, text, or email us anytime at <a href="tel:720-378-3939" style="color:inherit;font-weight:700;">(720) 378-3939</a> or <a href="mailto:PollenNationCo@gmail.com" style="color:inherit;font-weight:700;">PollenNationCo@gmail.com</a></p>
+    </div>
+    <div class="contact-form">
+      <form>
+        <div class="contact-row">
+          <div>
+            <label for="contact-first">First Name *</label>
+            <input type="text" id="contact-first" name="firstName" placeholder="First name" required>
+          </div>
+          <div>
+            <label for="contact-last">Last Name</label>
+            <input type="text" id="contact-last" name="lastName" placeholder="Last name">
+          </div>
+        </div>
+        <div class="contact-row">
+          <div>
+            <label for="contact-email">Email</label>
+            <input type="email" id="contact-email" name="email" placeholder="you@example.com">
+          </div>
+          <div>
+            <label for="contact-phone">Phone</label>
+            <input type="tel" id="contact-phone" name="phone" placeholder="(###) ###-####">
+          </div>
+        </div>
+        <div>
+          <label for="contact-message">Ask us anything or share your thoughts:</label>
+          <textarea id="contact-message" name="message" placeholder="Tell us about your project, timeline, and goals"></textarea>
+        </div>
+        <label class="contact-checkbox">
+          <input type="checkbox" style="width:18px;height:18px;">
+          <span>Yes, subscribe me to your newsletter.</span>
+        </label>
+        <button type="submit">SUBMIT</button>
+      </form>
+    </div>
+  </div>
+</section>
+<!-- === /Contact Section === -->
 <script>
   // === Reveal TopBar 7s after final logo appears ===
   ;(function(){

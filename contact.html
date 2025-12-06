@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Pollen Nation</title>
+  <style>
+    :root{
+      --bg: #f8f8f8;
+      --card: #fff;
+      --border: #e5e5e5;
+      --text: #1b1b1b;
+      --muted: #666;
+      --accent: #111;
+      --radius: 10px;
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    #contact{
+      padding: clamp(28px, 6vw, 64px) clamp(16px, 4vw, 48px) clamp(48px, 8vw, 80px);
+      display:flex;
+      justify-content:center;
+    }
+    .contact-shell{
+      width: min(1100px, 100%);
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: clamp(18px, 3vw, 28px);
+      align-items:start;
+    }
+    .card{
+      background: var(--card);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding: clamp(18px, 2vw, 26px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+    .info h2, .form h2{
+      margin:0 0 10px;
+      font-size: clamp(22px, 3vw, 28px);
+    }
+    .info p{
+      margin: 8px 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .info a{
+      color: var(--accent);
+      text-decoration:none;
+      font-weight:600;
+    }
+    .info a:hover{ text-decoration:underline; }
+    form{
+      display:grid;
+      gap: 14px;
+    }
+    label{
+      display:block;
+      font-weight:600;
+      margin-bottom: 6px;
+    }
+    input, textarea{
+      width:100%;
+      padding: 12px;
+      border:1px solid var(--border);
+      border-radius: 8px;
+      font-size: 15px;
+      font-family: inherit;
+      background:#fff;
+    }
+    textarea{ min-height: 130px; resize: vertical; }
+    .radio-row{
+      display:flex;
+      gap: 16px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .radio-row label{
+      font-weight:500;
+      margin-bottom:0;
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .error{
+      color:#b00020;
+      font-size: 13px;
+      margin-top:4px;
+      min-height: 16px;
+    }
+    .status{
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      border:1px solid transparent;
+    }
+    .status.success{
+      background:#e6f4ea;
+      border-color:#b3e6c4;
+      color:#126632;
+    }
+    .status.error{
+      background:#fdecea;
+      border-color:#f5c6c0;
+      color:#b3261e;
+    }
+    button{
+      border:none;
+      background: var(--accent);
+      color:#fff;
+      padding: 14px 16px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight:700;
+      cursor:pointer;
+      transition: background .2s ease, transform .1s ease;
+    }
+    button:hover{ background:#333; }
+    button:active{ transform: translateY(1px); }
+    @media (max-width: 820px){
+      .contact-shell{
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section id="contact">
+    <div class="contact-shell">
+      <div class="card info">
+        <h2>Contact Information</h2>
+        <p><a href="tel:720-378-3939">720-378-3939</a></p>
+        <p><a href="mailto:pollennationco@gmail.com">pollennationco@gmail.com</a></p>
+        <p>Based in Lafayette, Colorado</p>
+      </div>
+
+      <div class="card form">
+        <h2>Send us a message</h2>
+        <div id="form-status" class="status" style="display:none;"></div>
+        <form id="contact-form" novalidate>
+          <div>
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="name" required>
+            <div class="error" id="error-name"></div>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+          </div>
+          <div>
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone">
+            <div class="error" id="error-contact"></div>
+          </div>
+          <div>
+            <label>Preferred contact method</label>
+            <div class="radio-row">
+              <label><input type="radio" name="preferredContactMethod" value="Email" checked> Email</label>
+              <label><input type="radio" name="preferredContactMethod" value="Phone"> Phone</label>
+              <label><input type="radio" name="preferredContactMethod" value="Either"> Either</label>
+            </div>
+          </div>
+          <div>
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" required placeholder="Briefly describe what you need help with..."></textarea>
+            <div class="error" id="error-message"></div>
+          </div>
+          <button type="submit">Send message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function(){
+      const form = document.getElementById('contact-form');
+      const status = document.getElementById('form-status');
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      const phoneInput = document.getElementById('phone');
+      const messageInput = document.getElementById('message');
+      const errorName = document.getElementById('error-name');
+      const errorContact = document.getElementById('error-contact');
+      const errorMessage = document.getElementById('error-message');
+
+      function showStatus(msg, ok){
+        status.style.display = 'block';
+        status.textContent = msg;
+        status.className = 'status ' + (ok ? 'success' : 'error');
+      }
+      function clearStatus(){
+        status.style.display = 'none';
+        status.textContent = '';
+        status.className = 'status';
+      }
+      function clearErrors(){
+        errorName.textContent = '';
+        errorContact.textContent = '';
+        errorMessage.textContent = '';
+      }
+
+      form.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        clearStatus();
+        clearErrors();
+
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const phone = phoneInput.value.trim();
+        const message = messageInput.value.trim();
+        const preferred = (form.querySelector('input[name="preferredContactMethod"]:checked') || {}).value || 'Email';
+
+        let hasError = false;
+        if(!name){
+          errorName.textContent = 'Name is required.';
+          hasError = true;
+        }
+        if(!message){
+          errorMessage.textContent = 'Message is required.';
+          hasError = true;
+        }
+        if(!email && !phone){
+          errorContact.textContent = 'Please provide at least an email or phone number so we can contact you.';
+          hasError = true;
+        }
+        if(hasError) return;
+
+        try{
+          const res = await fetch('/api/contact', {
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({ name, email, phone, preferredContactMethod: preferred, message })
+          });
+          const data = await res.json();
+          if(data.success){
+            form.reset();
+            showStatus("Thanks! Your message has been sent. We'll get back to you soon.", true);
+          } else {
+            showStatus(data.error || 'Something went wrong. Please try again.', false);
+          }
+        }catch(err){
+          showStatus('Unable to send right now. Please try again shortly.', false);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
