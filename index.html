@@ -423,6 +423,59 @@ html, body { background:#fff; height:100%; }
   }
 }
 
+/* === Qualifications Marquee Section === */
+.qualifications-section{
+  height: 430px;
+  background: #f8f8f8;
+  display: grid;
+  place-items: center;
+  padding: 32px 20px;
+  overflow: hidden;
+  margin-top: -60px;
+}
+.qual-inner{
+  width: 100%;
+  text-align: center;
+  display: grid;
+  gap: 22px;
+}
+.qual-title{
+  font-size: clamp(26px, 4vw, 38px);
+  margin: 0;
+  letter-spacing: -0.01em;
+  font-weight: 800;
+}
+.qual-track-wrap{
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  margin-left: calc((100vw - 100%)/-2); /* bleed to full width */
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+.qual-track{
+  display: inline-flex;
+  gap: 100px;
+  animation: qual-marquee 18s linear infinite;
+  align-items: center;
+}
+.qual-badge{
+  width: 230px;
+  height: 230px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+}
+.qual-badge img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 24px rgba(0,0,0,0.12));
+}
+@keyframes qual-marquee{
+  0%{ transform: translateX(0); }
+  100%{ transform: translateX(-50%); }
+}
+
 </style>
 </head>
 <body>
@@ -588,7 +641,7 @@ html, body { background:#fff; height:100%; }
       <!-- Landscaping Card -->
       <div class="service-card scroll-reveal">
         <div class="service-card-image">
-          <img src="./assets/services/design-orig.jpg" alt="Landscaping">
+          <img src="./assets/services/irrigation-orig.jpg" alt="Landscaping">
         </div>
         <div class="service-card-content">
           <div class="service-content-wrapper">
@@ -653,6 +706,28 @@ html, body { background:#fff; height:100%; }
   </div>
 </section>
 <!-- === /Our Services Section === -->
+<!-- === Qualifications Section === -->
+<section class="qualifications-section" aria-label="Qualifications">
+  <div class="qual-inner">
+    <h2 class="qual-title">Certified for Quality & Care</h2>
+    <div class="qual-track-wrap" aria-hidden="true">
+      <div class="qual-track">
+        <div class="qual-badge"><img src="./assets/certified.jpeg" alt="Certification badge placeholder"></div>
+        <div class="qual-badge"><img src="./assets/certified.jpeg" alt="Certification badge placeholder"></div>
+        <div class="qual-badge"><img src="./assets/certified.jpeg" alt="Certification badge placeholder"></div>
+        <div class="qual-badge"><img src="./assets/certified.jpeg" alt="Certification badge placeholder"></div>
+        <div class="qual-badge"><img src="./assets/certified.jpeg" alt="Certification badge placeholder"></div>
+        <!-- duplicate badges for continuous scroll -->
+        <div class="qual-badge"><img src="./assets/certified.jpeg" alt="Certification badge placeholder"></div>
+        <div class="qual-badge"><img src="./assets/certified.jpeg" alt="Certification badge placeholder"></div>
+        <div class="qual-badge"><img src="./assets/certified.jpeg" alt="Certification badge placeholder"></div>
+        <div class="qual-badge"><img src="./assets/certified.jpeg" alt="Certification badge placeholder"></div>
+        <div class="qual-badge"><img src="./assets/certified.jpeg" alt="Certification badge placeholder"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- === /Qualifications Section === -->
 <script>
   // === Reveal TopBar 7s after final logo appears ===
   ;(function(){
