@@ -565,6 +565,65 @@ html, body { background:#fff; height:100%; }
   .contact-section{ margin-top: -80px; }
 }
 
+/* === Footer === */
+.pn-footer{
+  background:#1f221d;
+  color:#f1f3ef;
+  padding: 34px clamp(18px, 5vw, 52px);
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+.pn-footer-inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 16px;
+  align-items: center;
+}
+.pn-footer-brand{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+}
+.pn-footer-brand img{
+  height: 56px;
+  width: auto;
+}
+.pn-footer-title{
+  font-size: 18px;
+  font-weight: 800;
+}
+.pn-footer-tag{
+  color:#cfd5ce;
+  font-size: 14px;
+}
+.pn-footer-links{
+  display:flex;
+  gap: 14px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.pn-footer-links a{
+  color:#f1f3ef;
+  text-decoration:none;
+  font-weight:700;
+}
+.pn-footer-links a:hover{ text-decoration:underline; }
+.pn-footer-meta{
+  text-align:right;
+  color:#cfd5ce;
+  font-size: 13px;
+  line-height:1.5;
+}
+@media (max-width: 840px){
+  .pn-footer-inner{
+    grid-template-columns: 1fr;
+    text-align:center;
+  }
+  .pn-footer-brand{ justify-content:center; }
+  .pn-footer-meta{ text-align:center; }
+}
+
 </style>
 </head>
 <body>
@@ -860,6 +919,29 @@ html, body { background:#fff; height:100%; }
   </div>
 </section>
 <!-- === /Contact Section === -->
+<!-- === Footer === -->
+<footer class="pn-footer" id="footer">
+  <div class="pn-footer-inner">
+    <div class="pn-footer-brand">
+      <img src="./assets/final_logo.png" alt="Pollen Nation logo">
+      <div>
+        <div class="pn-footer-title">Pollen Nation</div>
+        <div class="pn-footer-tag">Cultivating healthier habitats</div>
+      </div>
+    </div>
+    <div class="pn-footer-links">
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+      <a href="tel:720-378-3939">Call</a>
+      <a href="mailto:pollennationco@gmail.com">Email</a>
+    </div>
+    <div class="pn-footer-meta">
+      <div>Based in Lafayette, Colorado</div>
+      <div>© Pollen Nation. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+<!-- === /Footer === -->
 <script>
   // === Reveal TopBar 7s after final logo appears ===
   ;(function(){
