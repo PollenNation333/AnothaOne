@@ -40,7 +40,7 @@
     /* Main content area */
     main{
         margin-top: 144px;
-        padding-top: 40px;
+        padding-top: 0;
     }
 
     /* Page header with video */
@@ -99,17 +99,62 @@
     .apple-hero.homestead    { background:var(--green-2); color:#111; }
     .apple-hero.eco-sciences { background:var(--soil-1); color:#111; }
 
-    /* Service item boxes */
-    .service-grid { display:flex; flex-wrap:wrap; gap:24px; width:100%; max-width:1400px; padding:0 20px; justify-content:center; }
-    .service-box { background:rgba(255,255,255,0.7); border:1px solid rgba(0,0,0,0.1); border-radius:12px; padding:32px; box-shadow:0 4px 12px rgba(0,0,0,0.08); transition:transform 0.2s ease, box-shadow 0.2s ease; flex:1; min-width:280px; max-width:380px; display:flex; flex-direction:column; gap:20px; }
-    .service-box:hover { transform:translateY(-4px); box-shadow:0 8px 20px rgba(0,0,0,0.12); }
-    .service-box h3 { margin:0; font-size:clamp(18px,2vw,22px); font-weight:700; line-height:1.3; }
-    .service-box .img-placeholder { width:100%; aspect-ratio:16/9; background:rgba(0,0,0,0.08); border-radius:8px; order:-1; }
-    @media (max-width: 640px){ .service-grid { flex-direction:column; } .service-box { max-width:100%; } }
+    /* Service slider */
+    .service-slider{
+      position:relative;
+      width:100%;
+      max-width:1600px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .service-window{
+      overflow-x:auto;
+      overflow-y:hidden;
+      position:relative;
+      width:100%;
+      scrollbar-width:none;
+    }
+    .service-window::-webkit-scrollbar{ display:none; }
+    .service-grid {
+      display:flex;
+      flex-wrap:nowrap;
+      gap:28px;
+      padding:0 6px;
+    }
+    .service-box { background:rgba(255,255,255,0.82); border:1px solid rgba(0,0,0,0.1); border-radius:14px; padding:32px; box-shadow:0 10px 24px rgba(0,0,0,0.12); transition:transform 0.2s ease, box-shadow 0.2s ease; min-width:340px; max-width:360px; display:flex; flex-direction:column; gap:20px; flex:0 0 auto; }
+    .service-box:hover { transform:translateY(-4px); box-shadow:0 12px 26px rgba(0,0,0,0.15); }
+    .service-box h3 { margin:0; font-size:clamp(18px,2vw,22px); font-weight:750; line-height:1.3; }
+    .service-box .img-placeholder { width:100%; aspect-ratio:16/9; background:rgba(0,0,0,0.08); border-radius:10px; order:-1; }
+    .slider-btn{
+      position:absolute;
+      top:50%;
+      transform: translateY(-50%);
+      width:54px;
+      height:80px;
+      border:1px solid rgba(0,0,0,0.18);
+      border-radius:12px;
+      background:rgba(0,0,0,0.16);
+      box-shadow:0 10px 24px rgba(0,0,0,0.22);
+      font-size:30px;
+      font-weight:800;
+      cursor:pointer;
+      z-index:20;
+      color:#0f0f0f;
+      display:grid;
+      place-items:center;
+      transition: background .2s ease, color .2s ease, transform .1s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+    .slider-btn:hover{ background:rgba(0,0,0,0.36); color:#fff; border-color:rgba(0,0,0,0.28); box-shadow:0 12px 26px rgba(0,0,0,0.28); }
+    .slider-btn:active{ transform: translateY(-50%) scale(0.95); }
+    .slider-btn.prev{ left:0; }
+    .slider-btn.next{ right:0; }
+    @media (max-width: 640px){
+      .service-box{ min-width: 260px; max-width: 280px; }
+      .service-slider{ padding: 0 18px; }
+    }
 </style>
 </head>
 <body>
-
 <!-- Top Bar -->
 <div id="topbar">
     <div class="logo-section">
@@ -139,12 +184,18 @@
                 <h2>Landscaping</h2>
                 <p class="sub">Environmentally friendly landscape curation and care.</p>
             </div>
-            <div class="service-grid">
-                <div class="service-box"><div class="img-placeholder"></div><h3>Irrigation</h3></div>
-                <div class="service-box"><div class="img-placeholder"></div><h3>Design/Installation</h3></div>
-                <div class="service-box"><div class="img-placeholder"></div><h3>Maintenance</h3></div>
-                <div class="service-box"><div class="img-placeholder"></div><h3>Mulch Installation</h3></div>
-                <div class="service-box"><div class="img-placeholder"></div><h3>Hedge Trimming</h3></div>
+            <div class="service-slider">
+              <button class="slider-btn prev" aria-label="Previous services">&#8249;</button>
+              <div class="service-window">
+                <div class="service-grid">
+                  <div class="service-box"><div class="img-placeholder"></div><h3>Irrigation</h3></div>
+                  <div class="service-box"><div class="img-placeholder"></div><h3>Design/Installation</h3></div>
+                  <div class="service-box"><div class="img-placeholder"></div><h3>Maintenance</h3></div>
+                  <div class="service-box"><div class="img-placeholder"></div><h3>Mulch Installation</h3></div>
+                  <div class="service-box"><div class="img-placeholder"></div><h3>Hedge Trimming</h3></div>
+                </div>
+              </div>
+              <button class="slider-btn next" aria-label="Next services">&#8250;</button>
             </div>
         </section>
         <div class="apple-spacer"></div>
@@ -153,12 +204,18 @@
                 <h2>Homestead Assistance</h2>
                 <p class="sub">Homegrown food and friendship.</p>
             </div>
-            <div class="service-grid">
-                <div class="service-box"><div class="img-placeholder"></div><h3>Food Gardens</h3></div>
-                <div class="service-box"><div class="img-placeholder"></div><h3>Backyard Beehives</h3></div>
-                <div class="service-box"><div class="img-placeholder"></div><h3>Chicken Tending</h3></div>
-                <div class="service-box"><div class="img-placeholder"></div><h3>Hay/Feed Delivery Subscriptions</h3></div>
-                <div class="service-box"><div class="img-placeholder"></div><h3>Wood Structure Building</h3></div>
+            <div class="service-slider">
+              <button class="slider-btn prev" aria-label="Previous services">&#8249;</button>
+              <div class="service-window">
+                <div class="service-grid">
+                  <div class="service-box"><div class="img-placeholder"></div><h3>Food Gardens</h3></div>
+                  <div class="service-box"><div class="img-placeholder"></div><h3>Backyard Beehives</h3></div>
+                  <div class="service-box"><div class="img-placeholder"></div><h3>Chicken Tending</h3></div>
+                  <div class="service-box"><div class="img-placeholder"></div><h3>Hay/Feed Delivery Subscriptions</h3></div>
+                  <div class="service-box"><div class="img-placeholder"></div><h3>Wood Structure Building</h3></div>
+                </div>
+              </div>
+              <button class="slider-btn next" aria-label="Next services">&#8250;</button>
             </div>
         </section>
         <div class="apple-spacer"></div>
@@ -167,15 +224,43 @@
                 <h2>Ecosystem Sciences</h2>
                 <p class="sub">Support your foodweb from the ground up.</p>
             </div>
-            <div class="service-grid">
-                <div class="service-box"><div class="img-placeholder"></div><h3>Soil Testing</h3></div>
-                <div class="service-box"><div class="img-placeholder"></div><h3>Soil Restoration/Remediation</h3></div>
-                <div class="service-box"><div class="img-placeholder"></div><h3>Compost Delivery</h3></div>
-                <div class="service-box"><div class="img-placeholder"></div><h3>Wildlife Housing Structures</h3></div>
+            <div class="service-slider">
+              <button class="slider-btn prev" aria-label="Previous services">&#8249;</button>
+              <div class="service-window">
+                <div class="service-grid">
+                  <div class="service-box"><div class="img-placeholder"></div><h3>Soil Testing</h3></div>
+                  <div class="service-box"><div class="img-placeholder"></div><h3>Soil Restoration/Remediation</h3></div>
+                  <div class="service-box"><div class="img-placeholder"></div><h3>Compost Delivery</h3></div>
+                  <div class="service-box"><div class="img-placeholder"></div><h3>Wildlife Housing Structures</h3></div>
+                </div>
+              </div>
+              <button class="slider-btn next" aria-label="Next services">&#8250;</button>
             </div>
         </section>
-    </section>
+</section>
 </main>
+<script>
+  (function(){
+    const sliders = document.querySelectorAll('.service-slider');
+    sliders.forEach(slider=>{
+      const windowEl = slider.querySelector('.service-window');
+      const track = slider.querySelector('.service-grid');
+      const prev = slider.querySelector('.slider-btn.prev');
+      const next = slider.querySelector('.slider-btn.next');
+      if(!windowEl || !track || !prev || !next) return;
+      const step = ()=>{
+        const card = track.querySelector('.service-box');
+        const styles = track ? getComputedStyle(track) : null;
+        const gap = styles ? parseFloat(styles.columnGap || styles.gap || '0') : 0;
+        const cardWidth = card ? card.getBoundingClientRect().width : windowEl.clientWidth * 0.6;
+        return cardWidth + gap;
+      };
+      const scroll = dir => windowEl.scrollBy({ left: dir * step(), behavior:'smooth' });
+      prev.addEventListener('click', ()=> scroll(-1));
+      next.addEventListener('click', ()=> scroll(1));
+    });
+  })();
+</script>
 
 </body>
 </html>
