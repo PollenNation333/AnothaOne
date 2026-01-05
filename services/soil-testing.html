@@ -10,11 +10,21 @@
   .topbar-brand{display:flex;align-items:center;gap:20px;}
   .topbar-brand img{height:150px;width:auto;display:block;}
   .topbar-title{font-size:36px;font-weight:700;letter-spacing:.02em;}
-  nav{display:flex;gap:28px;font-size:20px;}
-  nav a{color:#111;text-decoration:none;}
-  nav a:hover{text-decoration:underline;}
-  main{padding:200px 24px 120px;max-width:960px;margin:0 auto;text-align:center;position:relative;}
-  h1{font-size:clamp(42px,6vw,62px);margin:0;letter-spacing:-0.01em;}
+  .top-nav{display:flex;align-items:center;gap:28px;font-size:20px;}
+  .top-nav a{color:#111;text-decoration:none;}
+  .top-nav a:hover{text-decoration:underline;}
+  .nav-dropdown{position:relative;}
+  .nav-trigger{border:none;background:transparent;font:inherit;color:#111;display:flex;align-items:center;gap:6px;cursor:pointer;padding:0;}
+  .nav-caret{font-size:14px;}
+  .nav-menu{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid #e6e6e6;border-radius:10px;box-shadow:0 12px 28px rgba(0,0,0,0.16);padding:12px 14px;min-width:260px;z-index:20000;}
+  .nav-dropdown:hover .nav-menu, .nav-dropdown:focus-within .nav-menu{display:grid;}
+  .nav-menu .nav-group{padding:10px 10px 12px;border-bottom:1px solid #f0f0f0;display:grid;gap:6px;}
+  .nav-menu .nav-group:last-child{border-bottom:none;padding-bottom:4px;}
+  .nav-group-title{font-weight:800;font-size:14px;color:#555;}
+  .nav-menu a{color:#111;text-decoration:none;font-size:15px;}
+  .nav-menu a:hover{text-decoration:underline;}
+  main{padding:200px 24px 120px;max-width:1100px;margin:0 auto;text-align:center;position:relative;}
+  h1{font-size:clamp(42px,6vw,62px);margin:0 0 32px;letter-spacing:-0.01em;}
   .back-link{display:inline-block;margin:0;text-align:left;font-size:25px;font-weight:800;transform: translate(-700px, -80px);}
   .back-link a{color:#111;text-decoration:none;}
   .back-link a:hover{text-decoration:underline;}
@@ -41,16 +51,44 @@
       <img src="../assets/final_logo.png" alt="Pollen Nation">
       <div class="topbar-title">Pollen Nation</div>
     </div>
-    <nav aria-label="Primary">
-      <a href="../index.html#services">Services</a>
+    <nav class="top-nav" aria-label="Primary">
+
+      <div class="nav-dropdown">
+        <button class="nav-trigger" type="button">Services <span class="nav-caret">▾</span></button>
+        <div class="nav-menu">
+          <div class="nav-group">
+            <div class="nav-group-title">Landscaping</div>
+            <a href="./irrigation.html">Irrigation</a>
+            <a href="./design-installation.html">Design/Installation</a>
+            <a href="./maintenance.html">Maintenance</a>
+            <a href="./mulch-installation.html">Mulch Installation</a>
+            <a href="./hedge-trimming.html">Hedge Trimming</a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Homestead Assistance</div>
+            <a href="./food-gardens.html">Food Gardens</a>
+            <a href="./backyard-beehives.html">Backyard Beehives</a>
+            <a href="./chicken-tending.html">Chicken Tending</a>
+            <a href="./hay-feed-delivery-subscriptions.html">Hay/Feed Delivery Subscriptions</a>
+            <a href="./wood-structure-building.html">Wood Structure Building</a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Ecosystem Sciences</div>
+            <a href="./soil-testing.html">Soil Testing</a>
+            <a href="./soil-restoration-remediation.html">Soil Restoration/Remediation</a>
+            <a href="./compost-delivery.html">Compost Delivery</a>
+            <a href="./wildlife-housing-structures.html">Wildlife Housing Structures</a>
+          </div>
+        </div>
+      </div>
       <a href="../index.html#plans">Plans</a>
       <a href="../index.html#rebates">Rebates</a>
       <a href="../index.html#contact">Contact</a>
     </nav>
   </header>
-  <main>
+<main>
     <h1>Soil Testing</h1>
-    <p class="back-link"><a href="../index.html#services">← Back to Services</a></p>
+    <p class="back-link"><a href="../index.html#services">← Back to Home</a></p>
   </main>
 
   <footer class="pn-footer" id="footer">
@@ -74,6 +112,5 @@
       </div>
     </div>
   </footer>
-
 </body>
 </html>

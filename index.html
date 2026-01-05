@@ -622,6 +622,20 @@ html, body { background:#fff; height:100%; }
   font-size: 13px;
   line-height:1.5;
 }
+.top-nav{display:flex;align-items:center;gap:28px;font-size:20px;}
+.top-nav a{color:#111;text-decoration:none;}
+.top-nav a:hover{text-decoration:underline;}
+.nav-dropdown{position:relative;}
+.nav-trigger{border:none;background:transparent;font:inherit;color:#111;display:flex;align-items:center;gap:6px;cursor:pointer;padding:0;}
+.nav-caret{font-size:14px;}
+.nav-menu{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid #e6e6e6;border-radius:10px;box-shadow:0 12px 28px rgba(0,0,0,0.16);padding:12px 14px;min-width:260px;z-index:20000;}
+.nav-dropdown:hover .nav-menu,
+.nav-dropdown:focus-within .nav-menu{display:grid;}
+.nav-menu .nav-group{padding:10px 10px 12px;border-bottom:1px solid #f0f0f0;display:grid;gap:6px;}
+.nav-menu .nav-group:last-child{border-bottom:none;padding-bottom:4px;}
+.nav-group-title{font-weight:800;font-size:14px;color:#555;}
+.nav-menu a{color:#111;text-decoration:none;font-size:15px;}
+.nav-menu a:hover{text-decoration:underline;}
 @media (max-width: 840px){
   .pn-footer-inner{
     grid-template-columns: 1fr;
@@ -747,11 +761,38 @@ html, body { background:#fff; height:100%; }
 <img alt="Pollen Nation" src="./assets/final_logo.png" style="height:150px; width:auto; display:block"/>
 <div style="font-size:36px; font-weight:700; letter-spacing:.02em;">Pollen Nation</div>
 </div>
-<nav style="display:flex; gap:28px; font-size:20px;">
-<a href="#services" style="color:#111; text-decoration:none">Services</a>
-<a href="#plans" style="color:#111; text-decoration:none">Plans</a>
-<a href="#rebates" style="color:#111; text-decoration:none">Rebates</a>
-<a href="#contact" style="color:#111; text-decoration:none">Contact</a>
+<nav class="top-nav" aria-label="Primary">
+  <div class="nav-dropdown">
+    <button class="nav-trigger" type="button">Services <span class="nav-caret">▾</span></button>
+    <div class="nav-menu">
+      <div class="nav-group">
+        <div class="nav-group-title">Landscaping</div>
+        <a href="services/irrigation.html">Irrigation</a>
+        <a href="services/design-installation.html">Design/Installation</a>
+        <a href="services/maintenance.html">Maintenance</a>
+        <a href="services/mulch-installation.html">Mulch Installation</a>
+        <a href="services/hedge-trimming.html">Hedge Trimming</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-title">Homestead Assistance</div>
+        <a href="services/food-gardens.html">Food Gardens</a>
+        <a href="services/backyard-beehives.html">Backyard Beehives</a>
+        <a href="services/chicken-tending.html">Chicken Tending</a>
+        <a href="services/hay-feed-delivery-subscriptions.html">Hay/Feed Delivery Subscriptions</a>
+        <a href="services/wood-structure-building.html">Wood Structure Building</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-title">Ecosystem Sciences</div>
+        <a href="services/soil-testing.html">Soil Testing</a>
+        <a href="services/soil-restoration-remediation.html">Soil Restoration/Remediation</a>
+        <a href="services/compost-delivery.html">Compost Delivery</a>
+        <a href="services/wildlife-housing-structures.html">Wildlife Housing Structures</a>
+      </div>
+    </div>
+  </div>
+  <a href="#plans">Plans</a>
+  <a href="#rebates">Rebates</a>
+  <a href="#contact">Contact</a>
 </nav>
 </div>
 <section aria-label="Pollen Nation hero" class="pn-hero">
