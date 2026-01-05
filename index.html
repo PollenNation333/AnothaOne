@@ -782,7 +782,7 @@ html, body { background:#fff; height:100%; }
   <div class="services-container">
     <div class="services-header scroll-reveal">
       <h2>Our Services</h2>
-      <a href="book-service.html" class="view-all-link">Book Free Consultation →</a>
+      <a class="view-all-link" href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/pollennationco/new-meeting-1'});return false;">Book Free Consultation →</a>
     </div>
 
     <div class="services-cards">
@@ -1198,5 +1198,16 @@ html, body { background:#fff; height:100%; }
     }
   });
 })();
-</script></body>
+</script>
+<!-- Calendly link widget begin -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<style>
+  /* Nudge Calendly popup 30px downward from its default center position */
+  .calendly-overlay .calendly-popup {
+    transform: translate(-50%, calc(-50% + 30px)) !important;
+  }
+</style>
+<!-- Calendly link widget end -->
+</body>
 </html>
