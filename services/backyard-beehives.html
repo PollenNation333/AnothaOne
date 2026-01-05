@@ -28,6 +28,15 @@
   .back-link{display:inline-block;margin:0;text-align:left;font-size:25px;font-weight:800;transform: translate(-700px, -80px);}
   .back-link a{color:#111;text-decoration:none;}
   .back-link a:hover{text-decoration:underline;}
+  .beehive-feature{display:flex;gap:32px;align-items:center;justify-content:center;text-align:left;margin-top:24px;flex-wrap:wrap;}
+  .beehive-copy{flex:1 1 320px;font-size:18px;line-height:1.6;}
+  .beehive-visuals{flex:1 1 320px;display:grid;gap:14px;justify-items:end;}
+  .beehive-visuals img{max-width:100%;height:auto;border-radius:8px;box-shadow:0 18px 40px rgba(0,0,0,0.16);}
+  @media(max-width:900px){
+    .beehive-feature{flex-direction:column;}
+    .beehive-visuals{justify-items:center;}
+    h1{margin-bottom:20px;}
+  }
   .pn-footer{background:#1f221d;color:#f1f3ef;padding:34px clamp(18px, 5vw, 52px);border-top:1px solid rgba(255,255,255,0.08);}
   .pn-footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:16px;align-items:center;}
   .pn-footer-brand{display:flex;align-items:center;gap:12px;}
@@ -89,6 +98,17 @@
 <main>
     <h1>Backyard Beehives</h1>
     <p class="back-link"><a href="../index.html#services">← Back to Home</a></p>
+    <section class="beehive-feature">
+      <div class="beehive-copy">
+        Backyard beehives are a powerful way to connect with nature right on your property. Creating an apiary can increase food crop yields, support healthy honeybee populations, and even produce a surplus of hyper-local, fresh, raw honey. At Pollen Nation, our beekeepers are certified through the Colorado State University Extension Online Beekeeping Program, ensuring your hive is installed and cared for responsibly from the start.
+        <br><br>
+        Book a free consultation to find out if your property is a good fit for a backyard beehive and learn what responsible, low-impact beekeeping could look like in your space.
+      </div>
+      <div class="beehive-visuals">
+        <img src="../assets/hero.jpg" alt="Landscape view used as hero backdrop">
+        <img src="../assets/services/beehivesemx.jpeg" alt="Beekeepers tending to hives">
+      </div>
+    </section>
   </main>
 
   <footer class="pn-footer" id="footer">

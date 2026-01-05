@@ -28,6 +28,12 @@
   .back-link{display:inline-block;margin:0;text-align:left;font-size:25px;font-weight:800;transform: translate(-700px, -80px);}
   .back-link a{color:#111;text-decoration:none;}
   .back-link a:hover{text-decoration:underline;}
+  .food-feature{display:flex;gap:32px;align-items:center;justify-content:center;text-align:left;margin-top:24px;flex-wrap:wrap;}
+  .food-copy{flex:1 1 320px;font-size:18px;line-height:1.6;}
+  @media(max-width:900px){
+    .food-feature{flex-direction:column;}
+    h1{margin-bottom:20px;}
+  }
   .pn-footer{background:#1f221d;color:#f1f3ef;padding:34px clamp(18px, 5vw, 52px);border-top:1px solid rgba(255,255,255,0.08);}
   .pn-footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:16px;align-items:center;}
   .pn-footer-brand{display:flex;align-items:center;gap:12px;}
@@ -89,6 +95,13 @@
 <main>
     <h1>Food Gardens</h1>
     <p class="back-link"><a href="../index.html#services">← Back to Home</a></p>
+    <section class="food-feature">
+      <div class="food-copy">
+        One of Pollen Nation’s main goals is to help create a hyper-local food web, starting right in our backyards. Beginning a food garden can feel daunting, but we’re here to make the process smooth and enjoyable—no matter how hands-on you’d like to be.
+        <br><br>
+        From garden layout and plant selection to soil preparation and long-term care planning, we design food gardens that fit your space, experience level, and goals. Whether you’re interested in growing a few seasonal crops or building a productive, perennial food system, we focus on healthy soil, resilient plants, and designs that continue to improve year after year.
+      </div>
+    </section>
   </main>
 
   <footer class="pn-footer" id="footer">
