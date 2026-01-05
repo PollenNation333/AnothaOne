@@ -28,6 +28,15 @@
   .back-link{display:inline-block;margin:0;text-align:left;font-size:25px;font-weight:800;transform: translate(-700px, -80px);}
   .back-link a{color:#111;text-decoration:none;}
   .back-link a:hover{text-decoration:underline;}
+  .hedge-feature{display:flex;gap:32px;align-items:center;justify-content:center;text-align:left;margin-top:24px;flex-wrap:wrap;}
+  .hedge-copy{flex:1 1 320px;font-size:18px;line-height:1.6;}
+  .hedge-visual{flex:1 1 320px;display:flex;justify-content:flex-end;}
+  .hedge-visual img{max-width:100%;height:auto;border-radius:8px;box-shadow:0 18px 40px rgba(0,0,0,0.16);}
+  @media(max-width:900px){
+    .hedge-feature{flex-direction:column;}
+    .hedge-visual{justify-content:center;}
+    h1{margin-bottom:20px;}
+  }
   .pn-footer{background:#1f221d;color:#f1f3ef;padding:34px clamp(18px, 5vw, 52px);border-top:1px solid rgba(255,255,255,0.08);}
   .pn-footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:16px;align-items:center;}
   .pn-footer-brand{display:flex;align-items:center;gap:12px;}
@@ -86,9 +95,19 @@
       <a href="../index.html#contact">Contact</a>
     </nav>
   </header>
-<main>
+  <main>
     <h1>Hedge Trimming</h1>
     <p class="back-link"><a href="../index.html#services">← Back to Home</a></p>
+    <section class="hedge-feature">
+      <div class="hedge-copy">
+        Hedge trimming at Pollen Nation is about guiding growth, not forcing it. Staying on top of proper pruning promotes healthier structure, improved airflow, and long-term vitality—while keeping hedges clean, balanced, and intentional in form. We take a plant-specific approach, trimming at the right time and in the right way to support natural growth habits rather than working against them.
+        <br><br>
+        By avoiding excessive or indiscriminate cutting, we help hedges grow denser, stronger, and more resilient over time. The result is a landscape that looks refined and well cared for, while continuing to function as a healthy, living system—season after season.
+      </div>
+      <div class="hedge-visual">
+        <img src="../assets/services/HedgeTrimminig.JPG" alt="Well-shaped hedge after trimming">
+      </div>
+    </section>
   </main>
 
   <footer class="pn-footer" id="footer">
