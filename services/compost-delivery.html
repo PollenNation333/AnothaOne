@@ -33,6 +33,12 @@
   .back-link{display:inline-block;margin:0;text-align:left;font-size:25px;font-weight:800;transform: translate(-700px, -80px);}
   .back-link a{color:#111;text-decoration:none;}
   .back-link a:hover{text-decoration:underline;}
+  .compost-feature{display:flex;gap:32px;align-items:flex-start;justify-content:center;text-align:left;margin-top:24px;flex-wrap:wrap;}
+  .compost-copy{flex:1 1 340px;font-size:18px;line-height:1.65;}
+  @media(max-width:900px){
+    .compost-feature{flex-direction:column;}
+    h1{margin-bottom:20px;}
+  }
   .pn-footer{background:#1f221d;color:#f1f3ef;padding:34px clamp(18px, 5vw, 52px);border-top:1px solid rgba(255,255,255,0.08);}
   .pn-footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:16px;align-items:center;}
   .pn-footer-brand{display:flex;align-items:center;gap:12px;}
@@ -54,8 +60,8 @@
   <header class="topbar">
     <a class="topbar-brand" href="../index.html">
       <img src="../assets/final_logo.png" alt="Pollen Nation">
-      <div class="topbar-title">Pollen Nation</a>
-    </div>
+      <div class="topbar-title">Pollen Nation</div>
+    </a>
     <nav class="top-nav" aria-label="Primary">
 
       <div class="nav-dropdown">
@@ -94,6 +100,15 @@
 <main>
     <h1>Compost Delivery</h1>
     <p class="back-link"><a href="../index.html#services">← Back to Home</a></p>
+    <section class="compost-feature">
+      <div class="compost-copy">
+        Pollen Nation sources and delivers high-quality, biologically rich compost ideal for food gardens, where soil health and safety matter most. We work with trusted suppliers to provide clean, nutrient-dense compost that supports healthy crops, beneficial microbes, and long-term soil fertility. We also offer additional compost options better suited for landscape plants, native gardens, and general soil improvement.
+        <br><br>
+        For larger projects, we can supply bulk dairy compost to increase organic matter and rebuild soil at scale. Through connections with local dairy farms, we coordinate large-quantity and semi-truck deliveries for landscape installations and restoration projects.
+        <br><br>
+        Whether you’re amending a few garden beds or restoring an entire property, we’ll help you choose the right compost and get it delivered efficiently.
+      </div>
+    </section>
   </main>
 
   <footer class="pn-footer" id="footer">

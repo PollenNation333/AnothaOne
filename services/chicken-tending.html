@@ -33,6 +33,12 @@
   .back-link{display:inline-block;margin:0;text-align:left;font-size:25px;font-weight:800;transform: translate(-700px, -80px);}
   .back-link a{color:#111;text-decoration:none;}
   .back-link a:hover{text-decoration:underline;}
+  .chicken-feature{display:flex;gap:32px;align-items:flex-start;justify-content:center;text-align:left;margin-top:24px;flex-wrap:wrap;}
+  .chicken-copy{flex:1 1 340px;font-size:18px;line-height:1.65;}
+  @media(max-width:900px){
+    .chicken-feature{flex-direction:column;}
+    h1{margin-bottom:20px;}
+  }
   .pn-footer{background:#1f221d;color:#f1f3ef;padding:34px clamp(18px, 5vw, 52px);border-top:1px solid rgba(255,255,255,0.08);}
   .pn-footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:16px;align-items:center;}
   .pn-footer-brand{display:flex;align-items:center;gap:12px;}
@@ -54,8 +60,8 @@
   <header class="topbar">
     <a class="topbar-brand" href="../index.html">
       <img src="../assets/final_logo.png" alt="Pollen Nation">
-      <div class="topbar-title">Pollen Nation</a>
-    </div>
+      <div class="topbar-title">Pollen Nation</div>
+    </a>
     <nav class="top-nav" aria-label="Primary">
 
       <div class="nav-dropdown">
@@ -94,6 +100,15 @@
 <main>
     <h1>Chicken Tending</h1>
     <p class="back-link"><a href="../index.html#services">← Back to Home</a></p>
+    <section class="chicken-feature">
+      <div class="chicken-copy">
+        Whether you need a weekly spot check or a full coop cleanout, Pollen Nation has your chickens covered. We provide reliable chicken tending and coop care to keep your birds healthy, comfortable, and productive.
+        <br><br>
+        From fresh water and feed checks to bedding changes, health observations, and deep cleanouts, we make sure your coop stays clean and your flock stays happy. Our team understands chicken behavior, seasonal needs, and predator-safe practices—so you can relax knowing your birds are in good hands.
+        <br><br>
+        Designed for backyard flocks, urban homesteads, and small farms across Colorado’s Front Range, our chicken care services are flexible, practical, and tailored to your setup.
+      </div>
+    </section>
   </main>
 
   <footer class="pn-footer" id="footer">

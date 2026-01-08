@@ -33,6 +33,12 @@
   .back-link{display:inline-block;margin:0;text-align:left;font-size:25px;font-weight:800;transform: translate(-700px, -80px);}
   .back-link a{color:#111;text-decoration:none;}
   .back-link a:hover{text-decoration:underline;}
+  .soil-feature{display:flex;gap:32px;align-items:flex-start;justify-content:center;text-align:left;margin-top:24px;flex-wrap:wrap;}
+  .soil-copy{flex:1 1 340px;font-size:18px;line-height:1.65;}
+  @media(max-width:900px){
+    .soil-feature{flex-direction:column;}
+    h1{margin-bottom:20px;}
+  }
   .pn-footer{background:#1f221d;color:#f1f3ef;padding:34px clamp(18px, 5vw, 52px);border-top:1px solid rgba(255,255,255,0.08);}
   .pn-footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:16px;align-items:center;}
   .pn-footer-brand{display:flex;align-items:center;gap:12px;}
@@ -54,8 +60,8 @@
   <header class="topbar">
     <a class="topbar-brand" href="../index.html">
       <img src="../assets/final_logo.png" alt="Pollen Nation">
-      <div class="topbar-title">Pollen Nation</a>
-    </div>
+      <div class="topbar-title">Pollen Nation</div>
+    </a>
     <nav class="top-nav" aria-label="Primary">
 
       <div class="nav-dropdown">
@@ -94,6 +100,13 @@
 <main>
     <h1>Soil Testing</h1>
     <p class="back-link"><a href="../index.html#services">← Back to Home</a></p>
+    <section class="soil-feature">
+      <div class="soil-copy">
+        Pollen Nation offers professional soil testing services to help you understand what’s happening below the surface. We collect soil samples from your property, send them to Colorado State University’s Soil, Water & Plant Testing Lab, and then interpret the results for you.
+        <br><br>
+        Based on your soil report, we provide clear, site-specific recommendations for soil remediation and restoration, including amendments, fertility improvements, and long-term soil-building strategies. No guesswork—just informed decisions that lead to healthier plants and more resilient landscapes.
+      </div>
+    </section>
   </main>
 
   <footer class="pn-footer" id="footer">

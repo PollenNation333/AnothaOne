@@ -33,6 +33,12 @@
   .back-link{display:inline-block;margin:0;text-align:left;font-size:25px;font-weight:800;transform: translate(-700px, -80px);}
   .back-link a{color:#111;text-decoration:none;}
   .back-link a:hover{text-decoration:underline;}
+  .wood-feature{display:flex;gap:32px;align-items:flex-start;justify-content:center;text-align:left;margin-top:24px;flex-wrap:wrap;}
+  .wood-copy{flex:1 1 340px;font-size:18px;line-height:1.65;}
+  @media(max-width:900px){
+    .wood-feature{flex-direction:column;}
+    h1{margin-bottom:20px;}
+  }
   .pn-footer{background:#1f221d;color:#f1f3ef;padding:34px clamp(18px, 5vw, 52px);border-top:1px solid rgba(255,255,255,0.08);}
   .pn-footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:16px;align-items:center;}
   .pn-footer-brand{display:flex;align-items:center;gap:12px;}
@@ -54,8 +60,8 @@
   <header class="topbar">
     <a class="topbar-brand" href="../index.html">
       <img src="../assets/final_logo.png" alt="Pollen Nation">
-      <div class="topbar-title">Pollen Nation</a>
-    </div>
+      <div class="topbar-title">Pollen Nation</div>
+    </a>
     <nav class="top-nav" aria-label="Primary">
 
       <div class="nav-dropdown">
@@ -94,6 +100,13 @@
 <main>
     <h1>Wood Structure Building</h1>
     <p class="back-link"><a href="../index.html#services">← Back to Home</a></p>
+    <section class="wood-feature">
+      <div class="wood-copy">
+        Pollen Nation builds simple, functional wood structures that support your garden, animals, and outdoor space. We focus on practical projects like raised garden beds, small fences, chicken coops, and other straightforward utility structures.
+        <br><br>
+        Our structures are thoughtfully built with longevity and ease of use in mind, using practical designs and quality materials. Each project is sized and scoped to fit your space without unnecessary complexity.
+      </div>
+    </section>
   </main>
 
   <footer class="pn-footer" id="footer">
