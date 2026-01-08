@@ -498,6 +498,9 @@ html, body { background:#fff; height:100%; }
   gap: 20px;
   text-align: center;
 }
+.contact-header{
+  position: relative;
+}
 .contact-header h2{
   margin:0;
   font-size: clamp(42px, 8vw, 68px);
@@ -509,6 +512,23 @@ html, body { background:#fff; height:100%; }
   line-height: 1.5;
   color:#f0f0eb;
 }
+.contact-book-btn{
+  display:inline-block;
+  position:absolute;
+  top:5px;
+  right:-190px;
+  padding:16px 30px;
+  background:#f6f6f3;
+  color:#2f482b;
+  border-radius:999px;
+  font-weight:900;
+  font-size:22px;
+  text-decoration:none;
+  border:1.5px solid #f6f6f3;
+  transition: background .2s ease, color .2s ease, transform .1s ease;
+}
+.contact-book-btn:hover{ background:transparent; color:#f6f6f3; }
+.contact-book-btn:active{ transform: translateY(1px); }
 .contact-form form{
   display:grid;
   gap: 16px;
@@ -625,6 +645,10 @@ html, body { background:#fff; height:100%; }
 .top-nav{display:flex;align-items:center;gap:28px;font-size:20px;}
 .top-nav a{color:#111;text-decoration:none;}
 .top-nav a:hover{text-decoration:underline;}
+.topbar-brand, .topbar-brand:hover, .topbar-brand:visited, .topbar-brand:active{
+  text-decoration:none;
+  color:inherit;
+}
 .nav-dropdown{position:relative;}
 .nav-trigger{border:none;background:transparent;font:inherit;color:#111;display:flex;align-items:center;gap:6px;cursor:pointer;padding:0;}
 .nav-caret{font-size:14px;}
@@ -636,6 +660,15 @@ html, body { background:#fff; height:100%; }
 .nav-group-title{font-weight:800;font-size:14px;color:#555;}
 .nav-menu a{color:#111;text-decoration:none;font-size:15px;}
 .nav-menu a:hover{text-decoration:underline;}
+.calendly-close-btn-custom{
+  position:fixed; top:18px; right:18px;
+  background:#111; color:#fff; border:none;
+  border-radius:50%; width:42px; height:42px;
+  font-size:22px; line-height:1;
+  cursor:pointer; box-shadow:0 10px 26px rgba(0,0,0,0.18);
+  z-index:2147483000;
+}
+.calendly-close-btn-custom:hover{ background:#2a2a2a; }
 @media (max-width: 840px){
   .pn-footer-inner{
     grid-template-columns: 1fr;
@@ -752,15 +785,15 @@ html, body { background:#fff; height:100%; }
   </script>
 <!-- === Top Bar (appears after logo reveal) === -->
 <div id="topbar" style="
-    position:fixed; top:0; left:0; right:0; height:144px;
+    position:fixed; top:0; left:0; right:-20px; height:144px;
     display:flex; align-items:center; justify-content:space-between;
     background:rgba(255,255,255,0.95); backdrop-filter:saturate(140%) blur(6px);
     border-bottom:1px solid #eee; padding:0 40px; box-sizing:border-box;
     opacity:0; transition:opacity .8s ease; z-index:10000;">
-<div style="display:flex; align-items:center; gap:20px;">
+<a class="topbar-brand" href="index.html" style="display:flex; align-items:center; gap:20px; text-decoration:none; color:inherit;">
 <img alt="Pollen Nation" src="./assets/final_logo.png" style="height:150px; width:auto; display:block"/>
 <div style="font-size:36px; font-weight:700; letter-spacing:.02em;">Pollen Nation</div>
-</div>
+</a>
 <nav class="top-nav" aria-label="Primary">
   <div class="nav-dropdown">
     <button class="nav-trigger" type="button">Services <span class="nav-caret">▾</span></button>
@@ -790,7 +823,7 @@ html, body { background:#fff; height:100%; }
       </div>
     </div>
   </div>
-  <a href="#plans">Plans</a>
+  <a href="about.html">About Us</a>
   <a href="#rebates">Rebates</a>
   <a href="#contact">Contact</a>
 </nav>
@@ -830,7 +863,6 @@ html, body { background:#fff; height:100%; }
   <div class="services-container">
     <div class="services-header scroll-reveal">
       <h2>Our Services</h2>
-      <a class="view-all-link" href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/pollennationco/new-meeting-1'});return false;">Book Free Consultation →</a>
     </div>
 
     <div class="services-cards">
@@ -930,6 +962,7 @@ html, body { background:#fff; height:100%; }
     <div class="contact-header">
       <h2> CONTACT US</h2>
       <p style="font-size:25px;">Feel free to call, text, or email us anytime at <a href="tel:720-378-3939" style="color:inherit;font-weight:700;">(720) 378-3939</a> or <a href="mailto:PollenNationCo@gmail.com" style="color:inherit;font-weight:700;">PollenNationCo@gmail.com</a></p>
+      <a class="contact-book-btn" href="#" onclick="return openCalendlyPopup(event);">Book Free Consultation</a>
     </div>
     <div class="contact-form">
       <form>
@@ -1256,6 +1289,32 @@ html, body { background:#fff; height:100%; }
     transform: translate(-50%, calc(-50% + 30px)) !important;
   }
 </style>
+<script>
+  function addCalendlyCloseButton(){
+    var overlay = document.querySelector('.calendly-overlay');
+    if(!overlay){
+      return setTimeout(addCalendlyCloseButton, 50);
+    }
+    if(document.querySelector('.calendly-close-btn-custom')) return;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'calendly-close-btn-custom';
+    btn.textContent = '×';
+    btn.addEventListener('click', function(){
+      if(window.Calendly && Calendly.closePopupWidget){ Calendly.closePopupWidget(); }
+      btn.remove();
+    });
+    overlay.appendChild(btn);
+  }
+  function openCalendlyPopup(evt){
+    if(evt) evt.preventDefault();
+    if(window.Calendly && Calendly.initPopupWidget){
+      Calendly.initPopupWidget({url: 'https://calendly.com/pollennationco/new-meeting-1'});
+      addCalendlyCloseButton();
+    }
+    return false;
+  }
+</script>
 <!-- Calendly link widget end -->
 </body>
 </html>

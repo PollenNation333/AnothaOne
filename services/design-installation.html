@@ -13,6 +13,11 @@
   .top-nav{display:flex;align-items:center;gap:28px;font-size:20px;}
   .top-nav a{color:#111;text-decoration:none;}
   .top-nav a:hover{text-decoration:underline;}
+.topbar-brand, .topbar-brand:hover, .topbar-brand:visited, .topbar-brand:active{
+  text-decoration:none;
+  color:inherit;
+}
+
   .nav-dropdown{position:relative;}
   .nav-trigger{border:none;background:transparent;font:inherit;color:#111;display:flex;align-items:center;gap:6px;cursor:pointer;padding:0;}
   .nav-caret{font-size:14px;}
@@ -56,9 +61,9 @@
 </head>
 <body>
   <header class="topbar">
-    <div class="topbar-brand">
+    <a class="topbar-brand" href="../index.html">
       <img src="../assets/final_logo.png" alt="Pollen Nation">
-      <div class="topbar-title">Pollen Nation</div>
+      <div class="topbar-title">Pollen Nation</a>
     </div>
     <nav class="top-nav" aria-label="Primary">
 
@@ -90,7 +95,7 @@
           </div>
         </div>
       </div>
-      <a href="../index.html#plans">Plans</a>
+      <a href="../about.html">About Us</a>
       <a href="../index.html#rebates">Rebates</a>
       <a href="../index.html#contact">Contact</a>
     </nav>
