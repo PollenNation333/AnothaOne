@@ -6,7 +6,7 @@
 <title>Wood Structure Building | Pollen Nation</title>
 <style>
   body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#f8f8f8;color:#111;}
-  .topbar{position:fixed;top:0;left:0;right:0;height:144px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.96);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid #eee;padding:0 40px;box-sizing:border-box;z-index:1000;}
+  .topbar{position:fixed;top:0;left:0;right:0;height:144px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.95);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid #eee;padding:0 40px;box-sizing:border-box;z-index:10000;}
   .topbar-brand{display:flex;align-items:center;gap:20px;}
   .topbar-brand img{height:150px;width:auto;display:block;}
   .topbar-title{font-size:52px;font-weight:720;letter-spacing:.01em;}
@@ -60,9 +60,9 @@
 </style>
 </head>
 <body>
-  <header class="topbar">
-    <a class="topbar-brand" href="../index.html">
-      <img src="../assets/final_logo.png" alt="Pollen Nation">
+      <header id="topbar" class="topbar">
+    <a class="topbar-brand" href="/index.html">
+      <img src="/assets/final_logo.png" alt="Pollen Nation">
       <div class="topbar-title">Pollen Nation</div>
     </a>
     <nav class="top-nav" aria-label="Primary">
@@ -71,32 +71,32 @@
         <div class="nav-menu">
           <div class="nav-group">
             <div class="nav-group-title">Landscaping</div>
-            <a href="./irrigation.html">Irrigation</a>
-            <a href="./design-installation.html">Design/Installation</a>
-            <a href="./maintenance.html">Maintenance</a>
-            <a href="./mulch-installation.html">Mulch Installation</a>
-            <a href="./hedge-trimming.html">Hedge Trimming</a>
+            <a href="/services/irrigation.html">Irrigation</a>
+            <a href="/services/design-installation.html">Design/Installation</a>
+            <a href="/services/maintenance.html">Maintenance</a>
+            <a href="/services/mulch-installation.html">Mulch Installation</a>
+            <a href="/services/hedge-trimming.html">Hedge Trimming</a>
           </div>
           <div class="nav-group">
             <div class="nav-group-title">Homestead Assistance</div>
-            <a href="./food-gardens.html">Food Gardens</a>
-            <a href="./backyard-beehives.html">Backyard Beehives</a>
-            <a href="./chicken-tending.html">Chicken Tending</a>
-            <a href="./hay-feed-delivery-subscriptions.html">Hay/Feed Delivery Subscriptions</a>
-            <a href="./wood-structure-building.html">Wood Structure Building</a>
+            <a href="/services/food-gardens.html">Food Gardens</a>
+            <a href="/services/backyard-beehives.html">Backyard Beehives</a>
+            <a href="/services/chicken-tending.html">Chicken Tending</a>
+            <a href="/services/hay-feed-delivery-subscriptions.html">Hay/Feed Delivery Subscriptions</a>
+            <a href="/services/wood-structure-building.html">Wood Structure Building</a>
           </div>
           <div class="nav-group">
             <div class="nav-group-title">Ecosystem Sciences</div>
-            <a href="./soil-testing.html">Soil Testing</a>
-            <a href="./soil-restoration-remediation.html">Soil Restoration/Remediation</a>
-            <a href="./compost-delivery.html">Compost Delivery</a>
-            <a href="./wildlife-housing-structures.html">Wildlife Housing Structures</a>
+            <a href="/services/soil-testing.html">Soil Testing</a>
+            <a href="/services/soil-restoration-remediation.html">Soil Restoration/Remediation</a>
+            <a href="/services/compost-delivery.html">Compost Delivery</a>
+            <a href="/services/wildlife-housing-structures.html">Wildlife Housing Structures</a>
           </div>
         </div>
       </div>
-      <a href="../about.html">About Us</a>
-      <a href="../index.html#contact">Contact</a>
-      <a class="topbar-cta" href="../index.html#contact">Book Free Consultation</a>
+      <a href="/about.html">About Us</a>
+      <a href="/index.html#contact">Contact</a>
+      <a class="topbar-cta" href="#" onclick="return openCalendlyPopup(event);">Book Free Consultation</a>
     </nav>
   </header>
 <main>
@@ -132,5 +132,58 @@
       </div>
     </div>
   </footer>
+<!-- Calendly link widget begin -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<style>
+  /* Nudge Calendly popup 30px downward from its default center position */
+  .calendly-overlay .calendly-popup {
+    transform: translate(-50%, calc(-50% + 30px)) !important;
+  }
+</style>
+<script>
+  function addCalendlyCloseButton(){
+    var overlay = document.querySelector('.calendly-overlay');
+    if(!overlay){
+      return setTimeout(addCalendlyCloseButton, 50);
+    }
+    if(document.querySelector('.calendly-close-btn-custom')) return;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'calendly-close-btn-custom';
+    btn.textContent = '×';
+    function place(){
+      var popup = document.querySelector('.calendly-popup');
+      if(popup){
+        var rect = popup.getBoundingClientRect();
+        btn.style.position = 'fixed';
+        btn.style.top = Math.max(10, rect.top - 16) + 'px';
+        btn.style.left = (rect.right + 12) + 'px';
+      } else {
+        btn.style.position = 'fixed';
+        btn.style.top = '18px';
+        btn.style.right = '18px';
+      }
+    }
+    btn.addEventListener('click', function(){
+      if(window.Calendly && Calendly.closePopupWidget){ Calendly.closePopupWidget(); }
+      btn.remove();
+      window.removeEventListener('resize', place);
+    });
+    overlay.appendChild(btn);
+    place();
+    window.addEventListener('resize', place);
+  }
+  function openCalendlyPopup(evt){
+    if(evt) evt.preventDefault();
+    if(window.Calendly && Calendly.initPopupWidget){
+      Calendly.initPopupWidget({url: 'https://calendly.com/pollennationco/new-meeting-1'});
+      addCalendlyCloseButton();
+    }
+    return false;
+  }
+</script>
+<!-- Calendly link widget end -->
+
 </body>
 </html>
