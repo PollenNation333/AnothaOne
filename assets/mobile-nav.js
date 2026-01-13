@@ -12,6 +12,15 @@
   }
 
   function bind(){
+    var logoImg = document.querySelector('.topbar-brand img');
+    if(logoImg){
+      logoImg.addEventListener('click', function(){
+        try{
+          sessionStorage.setItem('pn_force_loader', '1');
+        }catch(e){ /* ignore */ }
+      });
+    }
+
     document.querySelectorAll('.nav-dropdown').forEach(function(drop){
       var btn = drop.querySelector('.nav-trigger');
       if(!btn) return;

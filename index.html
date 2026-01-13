@@ -6,6 +6,31 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Pollen Nation</title>
 <meta content="Pollen Nation loading screen" name="description"/>
+<script>
+  (function(){
+    try{
+      var ref = document.referrer;
+      var isFromOther = false;
+      if(ref){
+        var refUrl = new URL(ref, window.location.href);
+        isFromOther = refUrl.origin === window.location.origin && refUrl.pathname !== window.location.pathname;
+      }
+      var nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+      var isReload = (nav && nav.type === 'reload') || (performance.navigation && performance.navigation.type === 1);
+      var seen = sessionStorage.getItem('pn_loader_shown') === '1';
+      var force = sessionStorage.getItem('pn_force_loader') === '1';
+      if(force){
+        sessionStorage.removeItem('pn_force_loader');
+      }
+      window.__skipLoader = !force && (isFromOther || (seen && !isReload));
+      if(!window.__skipLoader){
+        sessionStorage.setItem('pn_loader_shown', '1');
+      }
+    }catch(e){
+      window.__skipLoader = false;
+    }
+  })();
+</script>
 <style>
     *,*::before,*::after{box-sizing:border-box}
     html,body{height:100%; background: #000 url('./assets/hero.jpg') center center / cover no-repeat fixed;}
@@ -743,6 +768,13 @@ html, body { background:#fff; height:100%; }
 </div>
 <script>
     (function(){
+      if(window.__skipLoader){
+        var stg = document.getElementById('stage');
+        if(stg){ stg.style.display = 'none'; }
+        document.documentElement.style.overflowY = 'auto';
+        document.body.style.overflow = 'auto';
+        return;
+      }
       const bee = document.getElementById('bee');
       const finalLogo = document.getElementById('final');
       const anchor = document.getElementById('anchor');
@@ -1078,6 +1110,14 @@ html, body { background:#fff; height:100%; }
       const start = performance.now();
       const MAX_WAIT = 20000;
       const DELAY = 7000; // 7 seconds after visible
+      if(window.__skipLoader){
+        if(bar){ bar.style.opacity = '1'; }
+        document.documentElement.classList.add('hero-live');
+        document.body.classList.add('hero-live');
+        var stg = document.getElementById('stage');
+        if(stg){ stg.style.display = 'none'; }
+        return;
+      }
       function isVisible(){
         if(!finalWrap) return false;
         const st = getComputedStyle(finalWrap);
