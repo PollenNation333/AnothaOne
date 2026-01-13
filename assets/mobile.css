@@ -39,6 +39,7 @@
   .pn-hero{ background-attachment: scroll; background-position:center top; }
   .ttp-media{ left:0; top:0; }
   .ttp-note{ width:100%; }
+  .pn-hero-right{ display:none; }
   .contact-header{ display:flex; flex-direction:column; align-items:center; }
   .contact-book-btn{ position:static; margin:16px auto 0; }
 }
