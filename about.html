@@ -38,9 +38,16 @@
   .owner-copy{flex:1 1 340px;font-size:18px;line-height:1.65;}
   .owner-visual{flex:0 0 320px;display:flex;justify-content:flex-end;}
   .owner-visual img{max-width:100%;height:auto;border-radius:10px;box-shadow:0 18px 40px rgba(0,0,0,0.16);}
+  .areas-section{margin-top:48px;display:flex;gap:28px;flex-wrap:wrap;align-items:flex-start;}
+  .areas-map{flex:1 1 520px;}
+  .areas-map iframe{width:100%;height:420px;border:0;border-radius:10px;box-shadow:0 18px 40px rgba(0,0,0,0.16);}
+  .areas-list{flex:1 1 280px;}
+  .areas-list h2{margin:0 0 12px;font-size:28px;letter-spacing:-0.01em;}
+  .areas-list ul{margin:0;padding-left:18px;line-height:1.65;font-size:18px;}
   @media(max-width:900px){
     .owner-section{flex-direction:column;}
     .owner-visual{justify-content:center;}
+    .areas-section{flex-direction:column;}
   }
   .pn-footer{background:#1f221d;color:#f1f3ef;padding:34px clamp(18px, 5vw, 52px);border-top:1px solid rgba(255,255,255,0.08);}
   .pn-footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:16px;align-items:center;}
@@ -112,6 +119,30 @@
       </div>
       <div class="owner-visual">
         <img src="./assets/Pollen_Nation_BoulderCo.gif" alt="Pollen Nation graphic">
+      </div>
+    </section>
+
+    <section class="areas-section" aria-labelledby="areas-heading">
+      <div class="areas-list">
+        <h2 id="areas-heading">Areas of Service</h2>
+        <ul>
+          <li>Boulder, CO</li>
+          <li>Bow Mar, CO</li>
+          <li>Longmont, CO</li>
+          <li>Superior, CO</li>
+          <li>Lafayette, CO</li>
+          <li>Littleton, CO</li>
+          <li>Lone Tree, CO</li>
+          <li>Louisville, CO</li>
+          <li>Highlands Ranch, CO</li>
+          <li>Nederland, CO 80466</li>
+          <li>Columbine Valley, CO</li>
+          <li>Greenwood Village, CO</li>
+          <li>Cherry Hills Village, CO</li>
+        </ul>
+      </div>
+      <div class="areas-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d422652.1476687706!2d-105.17670999999999!3d39.85862905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xe71b0b9e96438bd%3A0xe4e37487584e317a!2sPollen%20Nation!5e1!3m2!1sen!2sus!4v1768280791690!5m2!1sen!2sus" width="650" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Pollen Nation service areas map"></iframe>
       </div>
     </section>
   </main>
