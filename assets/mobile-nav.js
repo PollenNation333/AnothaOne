@@ -42,9 +42,30 @@
     });
   }
 
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', bind);
-  } else {
+  function patchCalendly(){
+    if(!isMobile()) return;
+    if(typeof window.openCalendlyPopup !== 'function') return;
+    var original = window.openCalendlyPopup;
+    window.openCalendlyPopup = function(evt){
+      if(evt) evt.preventDefault();
+      try{
+        if(window.Calendly && Calendly.initPopupWidget){
+          return original(evt);
+        }
+      }catch(e){ /* ignore */ }
+      window.location.href = 'https://calendly.com/pollennationco/new-meeting-1';
+      return false;
+    };
+  }
+
+  function init(){
     bind();
+    patchCalendly();
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
 })();

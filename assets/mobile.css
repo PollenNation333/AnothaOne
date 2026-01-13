@@ -42,6 +42,23 @@
   .pn-hero-right{ display:none; }
   .contact-header{ display:flex; flex-direction:column; align-items:center; }
   .contact-book-btn{ position:static; margin:16px auto 0; }
+  .calendly-overlay{ padding:0 !important; }
+  .calendly-overlay{ z-index: 20000 !important; }
+  .calendly-overlay .calendly-popup{
+    width: min(92vw, 420px) !important;
+    height: min(90vh, 720px) !important;
+    max-width: 92vw !important;
+    max-height: 90vh !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, calc(-50% + 60px)) !important;
+    margin: 0 !important;
+  }
+  .calendly-overlay .calendly-popup-content,
+  .calendly-overlay .calendly-popup iframe{
+    width: 100% !important;
+    height: 100% !important;
+  }
 }
 
 @media (max-width: 640px){
@@ -52,6 +69,7 @@
   .services-cards{ gap:24px; }
   .service-card{ min-height:auto; }
   .service-card-image{ height:200px; }
+  .service-card-content{ position:relative; }
 
   .qualifications-section{ height:320px; padding:20px 12px; margin-top:-40px; }
   .qual-track{ gap:50px; }
