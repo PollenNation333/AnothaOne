@@ -1417,10 +1417,28 @@ html, body { background:#fff; height:100%; }
   }
   function openCalendlyPopup(evt){
     if(evt) evt.preventDefault();
-    if(window.Calendly && Calendly.initPopupWidget){
-      Calendly.initPopupWidget({url: 'https://calendly.com/pollennationco/new-meeting-1'});
-      addCalendlyCloseButton();
+    var url = 'https://calendly.com/pollennationco/new-meeting-1';
+    function tryOpen(){
+      if(window.Calendly && Calendly.initPopupWidget){
+        Calendly.initPopupWidget({url: url});
+        addCalendlyCloseButton();
+        return true;
+      }
+      return false;
     }
+    if(tryOpen()) return false;
+    var attempts = 0;
+    var timer = setInterval(function(){
+      attempts += 1;
+      if(tryOpen()){
+        clearInterval(timer);
+        return;
+      }
+      if(attempts >= 8){
+        clearInterval(timer);
+        window.location.href = url;
+      }
+    }, 125);
     return false;
   }
 </script>
