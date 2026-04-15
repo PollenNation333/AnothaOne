@@ -247,17 +247,17 @@ html, body { background:#fff; height:100%; }
   transform: translateY(0);
 }
 
-/* Stagger the service cards */
-.service-card.scroll-reveal:nth-child(1) {
-  transition-delay: 0.1s;
+/* Service cards: hidden by default, revealed when header reveals */
+.services-cards .service-card {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.service-card.scroll-reveal:nth-child(2) {
-  transition-delay: 0.1s;
-}
-
-.service-card.scroll-reveal:nth-child(3) {
-  transition-delay: 0.1s;
+.services-header.revealed ~ .services-cards .service-card {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .services-container {
@@ -952,7 +952,7 @@ html, body { background:#fff; height:100%; }
 
     <div class="services-cards">
       <!-- Landscaping Card -->
-      <div class="service-card scroll-reveal">
+      <div class="service-card">
         <div class="service-card-image">
           <img src="./assets/services/irrigation-orig.jpg" alt="Landscaping">
         </div>
@@ -974,7 +974,7 @@ html, body { background:#fff; height:100%; }
       </div>
 
       <!-- Homestead Assistance Card -->
-      <div class="service-card scroll-reveal">
+      <div class="service-card">
         <div class="service-card-image">
           <img src="./assets/services/beekeeping_boulder_colorado.jpeg" alt="Homestead Assistance">
         </div>
@@ -996,7 +996,7 @@ html, body { background:#fff; height:100%; }
       </div>
 
       <!-- Ecosystem Sciences Card -->
-      <div class="service-card scroll-reveal">
+      <div class="service-card">
         <div class="service-card-image">
           <img src="./assets/services/SoilScience.jpeg" alt="Ecosystem Sciences">
         </div>
