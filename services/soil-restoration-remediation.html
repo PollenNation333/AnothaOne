@@ -148,10 +148,11 @@
   }
 </style>
 <script>
-  function addCalendlyCloseButton(){
+  function addCalendlyCloseButton(attempts){
+    if((attempts||0) >= 200) return;
     var overlay = document.querySelector('.calendly-overlay');
     if(!overlay){
-      return setTimeout(addCalendlyCloseButton, 50);
+      return setTimeout(function(){ addCalendlyCloseButton((attempts||0)+1); }, 50);
     }
     if(document.querySelector('.calendly-close-btn-custom')) return;
     var btn = document.createElement('button');

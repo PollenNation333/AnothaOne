@@ -10,7 +10,7 @@
 <link rel="manifest" href="/site.webmanifest"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ecological Landscaping, Native Plants & Pollinator Gardens | Boulder County</title>
-<meta content="Pollen Nation loading screen" name="description"/>
+<meta content="Pollen Nation offers ecological landscaping, native plant gardens, pollinator habitat, and homestead services in Boulder County, Colorado." name="description"/>
 <script>
   (function(){
     try{
@@ -394,7 +394,8 @@ html, body { background:#fff; height:100%; }
               max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.service-card:hover .service-details {
+.service-card:hover .service-details,
+.service-card:focus-within .service-details {
   opacity: 1;
   max-height: 400px;
 }
@@ -775,7 +776,8 @@ html, body { background:#fff; height:100%; }
 </div>
 <script>
     (function(){
-      if(window.__skipLoader){
+      var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(window.__skipLoader || prefersReduced){
         var stg = document.getElementById('stage');
         if(stg){ stg.style.display = 'none'; }
         document.documentElement.style.overflowY = 'auto';
@@ -1383,10 +1385,11 @@ html, body { background:#fff; height:100%; }
   }
 </style>
 <script>
-  function addCalendlyCloseButton(){
+  function addCalendlyCloseButton(attempts){
+    if((attempts||0) >= 200) return;
     var overlay = document.querySelector('.calendly-overlay');
     if(!overlay){
-      return setTimeout(addCalendlyCloseButton, 50);
+      return setTimeout(function(){ addCalendlyCloseButton((attempts||0)+1); }, 50);
     }
     if(document.querySelector('.calendly-close-btn-custom')) return;
     var btn = document.createElement('button');
