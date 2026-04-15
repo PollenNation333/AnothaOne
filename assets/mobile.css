@@ -29,7 +29,7 @@
   .nav-dropdown:hover .nav-menu,
   .nav-dropdown:focus-within .nav-menu{ display:none; }
   .nav-dropdown.is-open .nav-menu{ display:grid; }
-  main{ padding-top:250px; }
+  main{ padding-top:280px; }
   .back-link{ transform:none; margin:0 0 16px; display:block; text-align:left; }
 
   :root{
@@ -42,8 +42,7 @@
   .pn-hero-right{ display:none; }
   .contact-header{ display:flex; flex-direction:column; align-items:center; }
   .contact-book-btn{ position:static; margin:16px auto 0; }
-  .calendly-overlay{ padding:0 !important; }
-  .calendly-overlay{ z-index: 20000 !important; }
+  .calendly-overlay{ padding:0 !important; z-index: 20000 !important; }
   .calendly-overlay .calendly-popup{
     width: min(92vw, 420px) !important;
     height: min(90vh, 720px) !important;
@@ -58,6 +57,14 @@
   .calendly-overlay .calendly-popup iframe{
     width: 100% !important;
     height: 100% !important;
+  }
+}
+
+@media (max-width: 840px){
+  /* Touch devices can't hover — always show service links */
+  .service-details{
+    opacity: 1;
+    max-height: none;
   }
 }
 
